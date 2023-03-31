@@ -1,0 +1,79 @@
+﻿// Amount of pixels to move the mouse with fast speed
+var.upSpeed = 20
+var.downSpeed = 20
+var.leftSpeed = 30
+var.rightSpeed = 30
+
+// Amount of pixels to move the mouse with slow speed
+var.upSlowSpeed = 7
+var.downSlowSpeed = 7
+var.leftSlowSpeed = 10
+var.rightSlowSpeed = 10
+
+// Amount of pixels to move with very fast speed
+var.upFastSpeed = 100
+var.downFastSpeed = 100
+var.leftFastSpeed = 120
+var.rightFastSpeed = 120
+
+// Misc Wii remote stuff
+Enter = Wiimote1.Plus
+Esc = Wiimote1.Minus
+mouse.LeftButton = Wiimote1.A
+mouse.rightButton = Wiimote1.B
+LeftWindows = Wiimote1.Home
+LShift = Wiimote1.One
+mouse.MiddleButton = Wiimote1.Two
+
+// Misc Nunchuk stuff
+LAlt = nunchuk1.C
+Tab = nunchuk1.Z
+
+// Nunchuk scrolling
+mouse.WheelUp = nunchuk.Up and Wiimote.Two
+mouse.WheelDown = nunchuk.Down and Wiimote.Two
+
+// Fast speed, using Nunchuk Joycon
+if nunchuk.Left and not Wiimote.Two {
+    mouse.CursorPosX = mouse.CursorPosX - var.leftSpeed
+}
+if nunchuk.Right and not Wiimote.Two {
+    mouse.CursorPosX = mouse.CursorPosX + var.rightSpeed
+}
+if nunchuk.Up and not Wiimote.Two {
+    mouse.CursorPosY = mouse.CursorPosY - var.upSpeed
+}
+if nunchuk.Down and not Wiimote.Two {
+    mouse.CursorPosY = mouse.CursorPosY + var.downSpeed
+}
+
+// Slow speed, using Wii remote D-pad
+if Wiimote1.Left {
+    mouse.CursorPosX = mouse.CursorPosX - var.leftSlowSpeed
+}
+if Wiimote1.Right {
+    mouse.CursorPosX = mouse.CursorPosX + var.rightSlowSpeed
+}
+if Wiimote1.Up {
+    mouse.CursorPosY = mouse.CursorPosY - var.upSlowSpeed
+}
+if Wiimote1.Down {
+    mouse.CursorPosY = mouse.CursorPosY + var.downSlowSpeed
+}
+
+// Fast speed, using Wii remote D-pad and Nunchuk Joycon
+if Wiimote1.Left and nunchuk.Left {
+   mouse.CursorPosX = mouse.CursorPosX - var.leftFastSpeed + var.leftSlowSpeed + var.leftSpeed
+}
+if Wiimote1.Right and nunchuk.Right {
+   mouse.CursorPosX = mouse.CursorPosX + var.rightFastSpeed - var.rightSlowSpeed - var.rightSpeed
+}
+if Wiimote1.Up and nunchuk.Up {
+   mouse.CursorPosY = mouse.CursorPosY - var.upFastSpeed + var.upSlowSpeed + var.upSpeed
+}
+if Wiimote1.Down and nunchuk.Down {
+   mouse.CursorPosY = mouse.CursorPosY + var.downFastSpeed - var.downSlowSpeed - var.downSpeed
+}
+
+
+
